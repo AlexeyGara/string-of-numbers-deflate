@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": ["node", "jest"],
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Bundler mode */
+    "moduleResolution": "node",
+    //"allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "preserveSymlinks": false,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    //"noUncheckedSideEffectImports": true
+  },
+
+  "baseUrl": ".",
+  "paths": {
+    "Deflate": ["src/Deflate"],
+    "Inflate": ["src/Inflate"]
+  },
+
+  "include": [
+    "src",
+    "test/**/*"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "temp",
+    "build",
+    "out"
+  ]
+}

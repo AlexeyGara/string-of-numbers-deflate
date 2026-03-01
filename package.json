@@ -1,0 +1,20 @@
+{
+  "name": "string-of-numbers-deflate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
+    "build": "npm run lint && tsc",
+    "build:nolint": "tsc",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.3.3",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^4.9.5"
+  }
+}
