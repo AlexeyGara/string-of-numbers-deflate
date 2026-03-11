@@ -52,7 +52,7 @@ const unpackNBit = (packedBytes:Uint8Array, bitsPerNum:number, numsCount:number)
 			const byteIndex = Math.floor(currentBit / 8);
 			const bitIndex  = currentBit % 8;
 
-			// Проверяем, установлен ли бит в байте
+			// Check if a bit in a byte is set
 			if((packedBytes[byteIndex] >> bitIndex) & 1) {
 				num |= (1 << i);
 			}
