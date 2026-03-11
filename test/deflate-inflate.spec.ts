@@ -10,7 +10,7 @@
 import { Deflate } from 'Deflate';
 import { Inflate } from 'Inflate';
 
-// Полифилы для Node.js (если запускаем через pnpm jest/vitest)
+// Polyfills for Node.js (if running via jest/vitest)
 if (typeof btoa === 'undefined') {
 	(globalThis as any).btoa = (s: string) => Buffer.from(s, 'binary').toString('base64');
 	(globalThis as any).atob = (s: string) => Buffer.from(s, 'base64').toString('binary');
@@ -97,22 +97,21 @@ describe('Binary Compression Logic E2E', () => {
 
 	testCases.forEach(({ name, input, keepOrder }) => {
 		it(`should correctly deflate/inflate: ${name}`, () => {
-			// 1. Сжимаем
+			// 1. Compress (Deflate)
 			const serialized = Deflate.serialize(input, keepOrder);
 
 			if (serialized instanceof Error) throw serialized;
 
 			const [base64, bits, count] = serialized;
 
-			//log(input, serialized);
 			log(`Compression: x${Math.round(input.length / base64.length * 10) / 10} [${input.length}->${base64.length}], tested on: '${name}'`);
 
-			// 2. Распаковываем
+			// 2. Unpack (Inflate)
 			const restored = Inflate.deserialize(base64, bits, count, keepOrder);
 
-			// 3. Сравнение
+			// 3. Comparison (Check)
 			if (!keepOrder) {
-				// Если порядок не важен, сравниваем отсортированные строки
+				// If the order is not important, compare the sorted strings
 				const originalSorted = input.split(',').map(Number).sort((a,b) => a-b).join(',');
 
 				expect(restored).toBe(originalSorted);
